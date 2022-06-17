@@ -6,4 +6,4 @@
 // @grant       none
 // ==/UserScript==
 
-history.pushState('','',location.href.match(/\/dp\/.*\//));
+history.pushState('','',location.href.match(/\/dp\/.{13}/));
