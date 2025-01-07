@@ -9,3 +9,4 @@
 // ==/UserScript==
 
 history.pushState('','',location.href.match(/\/dp\/.{10}/));
+history.pushState('','',location.href.match(/\/gp\/product\/.{10}/));
