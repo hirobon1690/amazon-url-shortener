@@ -8,5 +8,9 @@
 // @grant       none
 // ==/UserScript==
 
-history.pushState('','',location.href.match(/\/dp\/.{10}/));
-history.pushState('','',location.href.match(/\/gp\/product\/.{10}/));
+const fix = u => u ? (u.match(/\/(dp|gp\/product)\/.{10}/) || [u])[0] : u;
+['pushState', 'replaceState'].forEach(m => {
+    const orig = history[m];
+    history[m] = (s, t, u) => orig.call(history, s, t, fix(u));
+});
+history.replaceState('', '', fix(location.href));
